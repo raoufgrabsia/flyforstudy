@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canada Tourist Visa | Maghreb Campus</title>
+    <meta name="description" content="Expert guidance for Canadian visitor visas for Algerian citizens. High success rate with proper documentation.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --academic-blue: #1e3a8a;
+            --academic-gold: #f59e0b;
+            --canada-red: #dc2626;
+            --dark-navy: #0f172a;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', sans-serif; color: var(--text-dark); line-height: 1.6; background: var(--bg-light); }
+        
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 0;
+            transition: 0.3s ease; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--academic-blue); font-weight: 800; font-size: 1.5rem; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #f97316, #ec4899); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.15s ease; }
+        .nav-links a:hover { color: var(--canada-red); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-dark); font-size: 1.5rem; cursor: pointer; }
+        
+        .page-header {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #1e3a8a 100%);
+            padding: 10rem 0 6rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+        .page-header h1 { font-size: 3rem; margin-bottom: 1rem; position: relative; }
+        .page-header p { font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto; position: relative; }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--canada-red);
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .warning-box i { color: var(--canada-red); font-size: 1.5rem; margin-top: 0.25rem; }
+        .warning-box strong { color: var(--canada-red); display: block; margin-bottom: 0.5rem; }
+        
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            text-align: center;
+            border-top: 4px solid var(--canada-red);
+        }
+        
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--canada-red);
+            margin-bottom: 1rem;
+        }
+        
+        .info-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .info-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        .fees-highlight {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .fees-highlight h2 {
+            color: var(--canada-red);
+            margin-bottom: 1.5rem;
+        }
+        
+        .fee-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .fee-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .fee-item.ours {
+            border: 3px solid #10b981;
+            position: relative;
+        }
+        
+        .fee-item.ours::after {
+            content: 'RECOMMENDED';
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: #10b981;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .fee-item h4 {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .fee-item .amount {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+        
+        .fee-item.ours .amount {
+            color: #10b981;
+        }
+        
+        .documents-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            margin: 3rem 0;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        
+        .documents-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+        
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .doc-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            border-left: 4px solid var(--canada-red);
+        }
+        
+        .doc-item i {
+            color: var(--canada-red);
+            margin-top: 0.25rem;
+        }
+        
+        .doc-item span {
+            font-weight: 600;
+        }
+        
+        .biometrics-section {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 3rem;
+            border-radius: 24px;
+            margin: 3rem 0;
+        }
+        
+        .biometrics-section h2 {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .biometrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .bio-item {
+            text-align: center;
+        }
+        
+        .bio-item i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        .services-section {
+            margin: 4rem 0;
+        }
+        
+        .services-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+        
+        .service-card i {
+            font-size: 2rem;
+            color: var(--canada-red);
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 0.75rem;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 4rem;
+            border-radius: 24px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .cta-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-white {
+            background: white;
+            color: var(--canada-red);
+            margin-top: 1.5rem;
+        }
+        
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+        .whatsapp-btn {
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .fee-comparison { grid-template-columns: 1fr; }
+            .documents-section { padding: 1.5rem; }
+            .cta-box { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>Maghreb Campus</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="study-visa.html">Study Visa</a></li>
+                <li><a href="e-visa.html">E-Visa</a></li>
+                <li><a href="canada-visa.html">Canada</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-maple-leaf"></i> Canada Tourist Visa</h1>
+            <p>Expert guidance for Canadian visitor visas. Specialized support for Algerian applicants.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="warning-box">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <strong>High Refusal Rate Warning</strong>
+                Canadian visitor visas have a high refusal rate for Algerian citizens without proper documentation. Our expert team helps you prepare a strong application to maximize your chances of approval.
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Validity</h3>
+                <p>Up to 10 years multiple entry (or until passport expiry)</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-clock"></i>
+                <h3>Stay Duration</h3>
+                <p>Up to 6 months per visit</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-hourglass-half"></i>
+                <h3>Processing Time</h3>
+                <p>4-8 weeks average</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-fingerprint"></i>
+                <h3>Biometrics</h3>
+                <p>Required at VFS Algiers</p>
+            </div>
+        </div>
+
+        <div class="fees-highlight">
+            <h2>Transparent Fee Structure</h2>
+            <div class="fee-comparison">
+                <div class="fee-item ours">
+                    <h4>Maghreb Campus Service Fee</h4>
+                    <div class="amount">0 DZD</div>
+                    <p style="color: #10b981; font-size: 0.875rem; margin-top: 0.5rem;">FREE consultation & assistance</p>
+                </div>
+                <div class="fee-item">
+                    <h4>Total Official Fees</h4>
+                    <div class="amount">$230 CAD</div>
+                    <p style="color: var(--text-light); font-size: 0.875rem; margin-top: 0.5rem;">Visa $100 + Biometrics $85 + VFS $45</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="documents-section">
+            <h2><i class="fas fa-folder-open" style="color: var(--canada-red);"></i> Required Documents Checklist</h2>
+            <div class="doc-grid">
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Valid passport (6+ months validity)</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>IMM 5257 Application Form</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Family Information Form (IMM 5645)</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>2 Passport photos (35x45mm, white background)</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>6 months bank statements</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Employment letter (if employed)</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Business registration (if self-employed)</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Property ownership documents</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Travel itinerary & flight reservation</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Letter of invitation (if visiting family/friends)</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Host's status in Canada (PR card/citizenship)</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Proof of ties to Algeria (employment, family, property)</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Previous travel history (passport stamps)</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Purpose of travel letter</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Marriage/birth certificates (if applicable)</span></div>
+                <div class="doc-item"><i class="fas fa-check-circle"></i> <span>Travel insurance (recommended)</span></div>
+            </div>
+        </div>
+
+        <div class="biometrics-section">
+            <h2><i class="fas fa-fingerprint"></i> Biometrics Information</h2>
+            <p>All Canadian visa applicants must provide biometrics (fingerprints and photo). Here's what you need to know:</p>
+            
+            <div class="biometrics-grid">
+                <div class="bio-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Location</h4>
+                    <p>VFS Global Algiers<br>Centre Commercial Bab Ezzouar</p>
+                </div>
+                <div class="bio-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h4>Fee</h4>
+                    <p>$85 CAD<br>(approx. 9,500 DZD)</p>
+                </div>
+                <div class="bio-item">
+                    <i class="fas fa-clock"></i>
+                    <h4>Validity</h4>
+                    <p>10 years<br>No need to resubmit</p>
+                </div>
+                <div class="bio-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <h4>Appointment</h4>
+                    <p>Required<br>Book via VFS online</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="services-section">
+            <h2>Our Additional Services</h2>
+            <div class="service-cards">
+                <div class="service-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Document Review</h3>
+                    <p>Complete application check to identify weaknesses and suggest improvements before submission.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-edit"></i>
+                    <h3>Form Completion</h3>
+                    <p>Expert assistance with IMM 5257 and IMM 5645 forms to avoid common mistakes.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Biometrics Booking</h3>
+                    <p>We book your VFS appointment and prepare you for the biometrics collection process.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Cover Letter Drafting</h3>
+                    <p>Professional cover letters explaining your purpose of visit and strong ties to Algeria.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-money-check-alt"></i>
+                    <h3>Financial Organization</h3>
+                    <p>Guidance on presenting bank statements and financial documents effectively.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-redo"></i>
+                    <h3>Refusal Case Review</h3>
+                    <p>If you were previously refused, we analyze the reasons and strengthen your reapplication.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h2>Ready to Apply for Canada?</h2>
+            <p>Get expert guidance through every step of your Canadian visitor visa application. Free consultation available.</p>
+            <a href="https://wa.me/213XXXXXXXXX?text=Hello%20Maghreb%20Campus,%20I'm%20interested%20in%20applying%20for%20a%20Canada%20Tourist%20Visa." class="btn btn-white" target="_blank">
+                <i class="fab fa-whatsapp"></i> Start Your Application
+            </a>
+        </div>
+    </div>
+
+    <div class="whatsapp-float">
+        <a href="https://wa.me/213XXXXXXXXX" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+</body>
+</html>

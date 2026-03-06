@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Maghreb Campus</title>
+    <meta name="description" content="Get in touch with Maghreb Campus visa experts. WhatsApp, phone, email, or visit our office in Algiers.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --academic-blue: #1e3a8a;
+            --academic-gold: #f59e0b;
+            --sunset-orange: #f97316;
+            --dark-navy: #0f172a;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', sans-serif; color: var(--text-dark); line-height: 1.6; background: var(--bg-light); }
+        
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 0;
+            transition: 0.3s ease; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--academic-blue); font-weight: 800; font-size: 1.5rem; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #f97316, #ec4899); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.15s ease; }
+        .nav-links a:hover { color: var(--sunset-orange); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-dark); font-size: 1.5rem; cursor: pointer; }
+        
+        .page-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f59e0b 100%);
+            padding: 10rem 0 6rem;
+            text-align: center;
+            color: white;
+        }
+        .page-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .page-header p { font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 4rem 0;
+        }
+        
+        .whatsapp-section {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .whatsapp-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .whatsapp-btn-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: white;
+            color: #25d366;
+            padding: 1.25rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-btn-large:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .phone-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .phone-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            text-align: center;
+        }
+        
+        .phone-card i {
+            font-size: 1.5rem;
+            color: var(--sunset-orange);
+            margin-bottom: 0.5rem;
+        }
+        
+        .phone-card h4 {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+        
+        .phone-card p {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .contact-form-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        
+        .contact-form-container h2 {
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--academic-blue);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f97316, #ec4899);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+        }
+        
+        .other-contact {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            margin-top: 2rem;
+        }
+        
+        .other-contact h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--academic-blue);
+        }
+        
+        .contact-item div strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-item div p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 200px;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+        .whatsapp-btn {
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .phone-grid { grid-template-columns: 1fr; }
+            .whatsapp-section { padding: 2rem 1.5rem; }
+            .contact-form-container { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>Maghreb Campus</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="study-visa.html">Study Visa</a></li>
+                <li><a href="e-visa.html">E-Visa</a></li>
+                <li><a href="canada-visa.html">Canada</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Multiple ways to reach our visa experts. We're here to help you every step of the way.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="contact-grid">
+            <div class="contact-left">
+                <div class="whatsapp-section">
+                    <i class="fab fa-whatsapp" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                    <h2>Chat on WhatsApp</h2>
+                    <p>Fastest way to get answers. Available 24/7 for urgent inquiries.</p>
+                    <a href="https://wa.me/213XXXXXXXXX" class="whatsapp-btn-large" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Start Chat Now
+                    </a>
+                </div>
+                
+                <div class="phone-grid">
+                    <div class="phone-card">
+                        <i class="fas fa-plane"></i>
+                        <h4>E-Visa Inquiries</h4>
+                        <p>+213 555 XXX XXX</p>
+                    </div>
+                    <div class="phone-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Study Visa</h4>
+                        <p>+213 555 XXX XXX</p>
+                    </div>
+                    <div class="phone-card">
+                        <i class="fas fa-maple-leaf"></i>
+                        <h4>Canada Visa</h4>
+                        <p>+213 555 XXX XXX</p>
+                    </div>
+                    <div class="phone-card">
+                        <i class="fas fa-concierge-bell"></i>
+                        <h4>General Services</h4>
+                        <p>+213 555 XXX XXX</p>
+                    </div>
+                </div>
+                
+                <div class="other-contact">
+                    <h3>Other Contact Methods</h3>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p>contact@maghrebcampus.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Office Address</strong>
+                            <p>Algiers, Algeria<br>(Exact address provided upon appointment)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Working Hours</strong>
+                            <p>Sunday - Thursday<br>9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <span><i class="fas fa-map" style="margin-right: 0.5rem;"></i> Map loading...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-right">
+                <div class="contact-form-container">
+                    <h2>Send us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+213 XXX XXX XXX">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interest *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service...</option>
+                                <option value="e-visa">E-Visa</option>
+                                <option value="study-visa">Study Visa</option>
+                                <option value="canada">Canada Visa</option>
+                                <option value="flight">Flight Reservation</option>
+                                <option value="hotel">Hotel Booking</option>
+                                <option value="insurance">Travel Insurance</option>
+                                <option value="translation">Document Translation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required placeholder="Tell us about your visa needs..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="whatsapp-float">
+        <a href="https://wa.me/213XXXXXXXXX" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Store in localStorage (simulating submission)
+            let submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+            submissions.push({
+                ...formData,
+                date: new Date().toISOString(),
+                id: Date.now()
+            });
+            localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+            
+            // Show success message
+            alert('Thank you for your message! We will contact you within 24 hours via WhatsApp or email.');
+            
+            // Reset form
+            this.reset();
+            
+            // Open WhatsApp with pre-filled message as fallback
+            const whatsappText = encodeURIComponent(`Hello Maghreb Campus, I just submitted a contact form. My name is ${formData.name} and I'm interested in ${formData.service}.`);
+            window.open(`https://wa.me/213XXXXXXXXX?text=${whatsappText}`, '_blank');
+        });
+    </script>
+
+</body>
+</html>

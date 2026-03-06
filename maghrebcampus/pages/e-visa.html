@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Visa Services | Maghreb Campus</title>
+    <meta name="description" content="Quick electronic visas for Algerian citizens. Turkey, Armenia, Georgia, Albania, Azerbaijan, Thailand, Indonesia, and Vietnam.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --academic-blue: #1e3a8a;
+            --academic-gold: #f59e0b;
+            --sunset-orange: #f97316;
+            --sunset-pink: #ec4899;
+            --sunset-purple: #8b5cf6;
+            --dark-navy: #0f172a;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --gradient-sunset: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', sans-serif; color: var(--text-dark); line-height: 1.6; background: var(--bg-light); }
+        
+        /* Reuse navigation styles from index */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 0;
+            transition: 0.3s ease; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--academic-blue); font-weight: 800; font-size: 1.5rem; }
+        .logo-icon { width: 40px; height: 40px; background: var(--gradient-sunset); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.15s ease; position: relative; }
+        .nav-links a:hover { color: var(--sunset-orange); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-dark); font-size: 1.5rem; cursor: pointer; }
+        
+        .page-header {
+            background: var(--gradient-sunset);
+            padding: 10rem 0 6rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+        .page-header h1 { font-size: 3rem; margin-bottom: 1rem; position: relative; }
+        .page-header p { font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto 0.5rem; position: relative; }
+        
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+        
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+        
+        .country-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .country-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+        
+        .country-header {
+            padding: 2rem;
+            color: white;
+            position: relative;
+        }
+        
+        .country-turkey { background: linear-gradient(135deg, #f97316, #fb923c); }
+        .country-armenia { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+        .country-georgia { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+        .country-albania { background: linear-gradient(135deg, #dc2626, #f87171); }
+        .country-azerbaijan { background: linear-gradient(135deg, #10b981, #34d399); }
+        .country-thailand { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .country-indonesia { background: linear-gradient(135deg, #ef4444, #f87171); }
+        .country-vietnam { background: linear-gradient(135deg, #eab308, #facc15); }
+        
+        .country-flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .country-header h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .country-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        
+        .country-body {
+            padding: 2rem;
+        }
+        
+        .fee-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .fee-row:last-child {
+            border-bottom: none;
+        }
+        
+        .fee-label {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+        
+        .fee-value {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .fee-zero {
+            color: #10b981;
+            font-size: 1.25rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-sunset);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+        
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            padding: 2rem;
+            background: var(--gradient-sunset);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .document-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .document-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .document-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #10b981;
+        }
+        
+        .info-box {
+            background: #fef3c7;
+            border-left: 4px solid var(--academic-gold);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+        .whatsapp-btn {
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .countries-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>Maghreb Campus</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="study-visa.html">Study Visa</a></li>
+                <li><a href="e-visa.html">E-Visa</a></li>
+                <li><a href="canada-visa.html">Canada</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>E-Visa Services</h1>
+            <p>Quick electronic visas for Algerian citizens</p>
+            <p style="font-size: 1rem; opacity: 0.8; margin-top: 1rem;">Apply online and receive your visa via email. No embassy visits required.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="countries-grid" id="countriesGrid">
+            <!-- Countries will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="countryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+                <div id="modalFlag" style="font-size: 3rem; margin-bottom: 0.5rem;"></div>
+                <h2 id="modalTitle"></h2>
+                <p id="modalSubtitle"></p>
+            </div>
+            <div class="modal-body">
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i> <strong>Important:</strong> All documents must be clear, colored scans. Passport must be valid for at least 6 months beyond travel date.
+                </div>
+                
+                <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; color: var(--text-dark);">
+                    <i class="fas fa-file-alt" style="color: var(--sunset-orange);"></i> Required Documents
+                </h3>
+                <ul class="document-list" id="modalDocuments"></ul>
+                
+                <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; color: var(--text-dark);">
+                    <i class="fas fa-dollar-sign" style="color: var(--sunset-orange);"></i> Fee Breakdown
+                </h3>
+                <div id="modalFees"></div>
+                
+                <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; color: var(--text-dark);">
+                    <i class="fas fa-clock" style="color: var(--sunset-orange);"></i> Processing Details
+                </h3>
+                <p id="modalProcessing"></p>
+                
+                <a href="#" class="btn btn-primary" id="modalApplyBtn" style="margin-top: 2rem;">
+                    <i class="fab fa-whatsapp"></i> Apply Now via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="whatsapp-float">
+        <a href="https://wa.me/213XXXXXXXXX" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        const countries = [
+            {
+                id: 'turkey',
+                name: 'Turkey',
+                flag: '🇹🇷',
+                class: 'country-turkey',
+                processingTime: '24-48 hours',
+                stayDuration: '30 days',
+                governmentFee: '$61.50 USD',
+                documents: [
+                    'Valid passport (6+ months validity)',
+                    'Recent passport-sized photo (white background)',
+                    'Valid credit/debit card for payment',
+                    'Active email address',
+                    'Confirmed travel dates',
+                    'Return flight ticket'
+                ],
+                specialNotes: 'Single-entry visa valid for 30 days. Multiple entry available for additional fee.'
+            },
+            {
+                id: 'armenia',
+                name: 'Armenia',
+                flag: '🇦🇲',
+                class: 'country-armenia',
+                processingTime: '3-7 days',
+                stayDuration: '21-120 days',
+                governmentFee: '$6-31 USD',
+                documents: [
+                    'Valid passport',
+                    'Passport-sized photo',
+                    'Passport scan (bio page)',
+                    'Travel itinerary',
+                    'Accommodation booking',
+                    'Payment method',
+                    'Email address'
+                ],
+                specialNotes: 'Visa duration depends on fee paid. $6 for 21 days, $31 for 120 days.'
+            },
+            {
+                id: 'georgia',
+                name: 'Georgia',
+                flag: '🇬🇪',
+                class: 'country-georgia',
+                processingTime: '5 days',
+                stayDuration: '30 days',
+                governmentFee: '$20.50 USD',
+                documents: [
+                    'Valid passport (2 blank pages)',
+                    'Recent photo (35x45mm)',
+                    'Passport scan',
+                    'Travel insurance',
+                    'Hotel reservation',
+                    'Return flight ticket',
+                    'Email address',
+                    'Payment card'
+                ],
+                specialNotes: 'E-visa valid for 30 days within 120-day period.'
+            },
+            {
+                id: 'albania',
+                name: 'Albania',
+                flag: '🇦🇱',
+                class: 'country-albania',
+                processingTime: '15-30 days',
+                stayDuration: '90 days',
+                governmentFee: '$0-50 USD',
+                documents: [
+                    'Valid passport',
+                    'Passport photo',
+                    'Travel itinerary',
+                    'Accommodation proof',
+                    'Bank statement (3 months)',
+                    'Travel insurance',
+                    'Return flight booking'
+                ],
+                specialNotes: 'Some nationalities exempt from fee. Check current regulations.'
+            },
+            {
+                id: 'azerbaijan',
+                name: 'Azerbaijan',
+                flag: '🇦🇿',
+                class: 'country-azerbaijan',
+                processingTime: '3 hours - 3 days',
+                stayDuration: '30 days',
+                governmentFee: '$20-60 USD',
+                documents: [
+                    'Valid passport',
+                    'Digital photo',
+                    'Email address',
+                    'Payment method',
+                    'Travel dates',
+                    'Accommodation address'
+                ],
+                specialNotes: 'ASAN Visa system. Standard $20, urgent $60 (3 hours).'
+            },
+            {
+                id: 'thailand',
+                name: 'Thailand',
+                flag: '🇹🇭',
+                class: 'country-thailand',
+                processingTime: '5-15 days',
+                stayDuration: '60 days',
+                governmentFee: '$40 USD',
+                documents: [
+                    'Valid passport (2 blank pages)',
+                    'Photo 4x6cm (white background)',
+                    'Passport scan',
+                    'Travel itinerary',
+                    'Accommodation booking',
+                    'Return flight ticket',
+                    'Contact information'
+                ],
+                specialNotes: 'Tourist visa valid for 60 days, extendable once for 30 days.'
+            },
+            {
+                id: 'indonesia',
+                name: 'Indonesia',
+                flag: '🇮🇩',
+                class: 'country-indonesia',
+                processingTime: '3-7 days',
+                stayDuration: '30 days',
+                governmentFee: '$35-150 USD',
+                documents: [
+                    'Valid passport (2 blank pages)',
+                    'Photo 4x6cm',
+                    'Round-trip flight booking',
+                    'Hotel reservations',
+                    'Bank statement ($1,000+ balance)',
+                    'Travel insurance',
+                    'Email address'
+                ],
+                specialNotes: 'B211A Visit Visa. Price varies by processing speed.'
+            },
+            {
+                id: 'vietnam',
+                name: 'Vietnam',
+                flag: '🇻🇳',
+                class: 'country-vietnam',
+                processingTime: '3 days',
+                stayDuration: '30-90 days',
+                governmentFee: '$63-123 USD',
+                documents: [
+                    'Valid passport (2 blank pages)',
+                    'Passport image scan',
+                    'Portrait photo 4x6cm',
+                    'Email for OTP',
+                    'Payment card',
+                    'Intended travel dates'
+                ],
+                specialNotes: 'Single entry $63, multiple entry $123. E-visa valid for 30 or 90 days.'
+            }
+        ];
+
+        function renderCountries() {
+            const grid = document.getElementById('countriesGrid');
+            grid.innerHTML = countries.map(country => `
+                <div class="country-card">
+                    <div class="country-header ${country.class}">
+                        <div class="country-flag">${country.flag}</div>
+                        <h2>${country.name}</h2>
+                        <div class="country-meta">
+                            <span><i class="fas fa-clock"></i> ${country.processingTime}</span>
+                            <span><i class="fas fa-calendar"></i> ${country.stayDuration}</span>
+                        </div>
+                    </div>
+                    <div class="country-body">
+                        <div class="fee-row">
+                            <span class="fee-label">Our Service Fee</span>
+                            <span class="fee-value fee-zero">0 DZD</span>
+                        </div>
+                        <div class="fee-row">
+                            <span class="fee-label">Government Fee</span>
+                            <span class="fee-value">${country.governmentFee}</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openModal('${country.id}')">
+                            <i class="fas fa-file-alt"></i> View Requirements
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openModal(countryId) {
+            const country = countries.find(c => c.id === countryId);
+            if (!country) return;
+            
+            document.getElementById('modalFlag').textContent = country.flag;
+            document.getElementById('modalTitle').textContent = country.name + ' E-Visa';
+            document.getElementById('modalSubtitle').textContent = `Processing time: ${country.processingTime} • Stay duration: ${country.stayDuration}`;
+            
+            const docsList = document.getElementById('modalDocuments');
+            docsList.innerHTML = country.documents.map(doc => `<li>${doc}</li>`).join('');
+            
+            document.getElementById('modalFees').innerHTML = `
+                <div class="fee-row">
+                    <span class="fee-label">Service Fee</span>
+                    <span class="fee-value" style="color: #10b981; font-size: 1.25rem;">0 DZD (Free)</span>
+                </div>
+                <div class="fee-row">
+                    <span class="fee-label">Government Fee</span>
+                    <span class="fee-value">${country.governmentFee}</span>
+                </div>
+            `;
+            
+            document.getElementById('modalProcessing').innerHTML = `
+                <strong>Processing Time:</strong> ${country.processingTime}<br>
+                <strong>Stay Duration:</strong> ${country.stayDuration}<br>
+                <strong>Special Notes:</strong> ${country.specialNotes}
+            `;
+            
+            const whatsappText = encodeURIComponent(`Hello Maghreb Campus, I'm interested in applying for a ${country.name} E-Visa. Please provide more information.`);
+            document.getElementById('modalApplyBtn').href = `https://wa.me/213XXXXXXXXX?text=${whatsappText}`;
+            
+            document.getElementById('countryModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('countryModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('countryModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        renderCountries();
+    </script>
+</body>
+</html>

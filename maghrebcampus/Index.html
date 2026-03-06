@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fly for Study | Your Gateway to Global Education & Travel</title>
+    <meta name="description" content="Premier visa services for Algerians - Study visas for France, Hungary, Poland, Italy, Russia, China. E-Visas for Turkey, Georgia, Armenia and more.">
+    <meta name="keywords" content="Algeria visa, study abroad Algeria, e-visa Algeria, Campus France, Canada visa Algeria">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Fly for Study | Your Gateway to Global Education & Travel">
+    <meta property="og:description" content="Premier visa services for Algerians - Study visas and E-Visas">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Study Section Colors */
+            --academic-blue: #1e3a8a;
+            --academic-gold: #f59e0b;
+            --academic-white: #ffffff;
+            --academic-light: #dbeafe;
+            
+            /* Travel Section Colors */
+            --sunset-orange: #f97316;
+            --sunset-pink: #ec4899;
+            --sunset-purple: #8b5cf6;
+            --sunset-yellow: #fbbf24;
+            
+            /* Neutral */
+            --dark-navy: #0f172a;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            
+            /* Gradients */
+            --gradient-sunset: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+            --gradient-study: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f59e0b 100%);
+            --gradient-hero: linear-gradient(135deg, #1e3a8a 0%, #f97316 50%, #ec4899 100%);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-base: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--bg-light);
+        }
+        
+        /* Language Selector - Flags Only */
+        .language-selector {
+            position: relative;
+            margin-left: 1rem;
+        }
+        
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition-base);
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .navbar.scrolled .lang-btn {
+            color: var(--academic-blue);
+        }
+        
+        .navbar.scrolled .lang-btn {
+            background: rgba(30, 58, 138, 0.1);
+            border-color: rgba(30, 58, 138, 0.2);
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .navbar.scrolled .lang-btn:hover {
+            background: rgba(30, 58, 138, 0.2);
+        }
+        
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-xl);
+            padding: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition-base);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .language-selector.active .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .lang-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            border: 2px solid transparent;
+            background: transparent;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .lang-option:hover {
+            background: var(--bg-light);
+            transform: scale(1.1);
+        }
+        
+        .lang-option.active {
+            background: var(--academic-light);
+            border-color: var(--academic-blue);
+        }
+        
+        /* RTL Support for Arabic */
+        body[dir="rtl"] {
+            direction: rtl;
+        }
+        
+        body[dir="rtl"] .nav-container {
+            flex-direction: row-reverse;
+        }
+        
+        body[dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+            margin-left: 2rem;
+            margin-right: auto;
+        }
+        
+        body[dir="rtl"] .language-selector {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+        
+        body[dir="rtl"] .lang-dropdown {
+            right: auto;
+            left: 0;
+        }
+        
+        body[dir="rtl"] .hero-content {
+            direction: rtl;
+        }
+        
+        body[dir="rtl"] .hero-buttons {
+            flex-direction: row-reverse;
+        }
+        
+        body[dir="rtl"] .services-grid,
+        body[dir="rtl"] .features-grid,
+        body[dir="rtl"] .footer-grid {
+            direction: rtl;
+        }
+        
+        /* Fix Arabic Text Spacing */
+        .arabic-text {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            line-height: 1.8;
+            letter-spacing: 0;
+            word-spacing: 2px;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition-base);
+            background: transparent;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-md);
+            padding: 0.75rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--academic-white);
+            font-weight: 800;
+            font-size: 1.5rem;
+            transition: var(--transition-base);
+        }
+        
+        .navbar.scrolled .logo {
+            color: var(--academic-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-sunset);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin-left: auto;
+            margin-right: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+        
+        .navbar.scrolled .nav-links a {
+            color: var(--text-dark);
+        }
+        
+        .nav-links a:hover {
+            color: var(--academic-gold);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-sunset);
+            transition: var(--transition-base);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .navbar.scrolled .mobile-menu-btn {
+            color: var(--text-dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--dark-navy);
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--academic-blue);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+        
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--sunset-orange);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: -5s;
+        }
+        
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: var(--sunset-purple);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 8rem 1.5rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        
+        .hero-text .highlight {
+            background: var(--gradient-sunset);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-base);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-sunset);
+            color: white;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .btn-study {
+            background: var(--academic-blue);
+            color: white;
+        }
+        
+        .btn-travel {
+            background: var(--gradient-sunset);
+            color: white;
+        }
+        
+        .hero-visual {
+            position: relative;
+            height: 500px;
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            animation: float-card 6s infinite ease-in-out;
+        }
+        
+        .floating-card:nth-child(1) {
+            top: 0;
+            right: 0;
+            animation-delay: 0s;
+        }
+        
+        .floating-card:nth-child(2) {
+            top: 40%;
+            left: 0;
+            animation-delay: -2s;
+        }
+        
+        .floating-card:nth-child(3) {
+            bottom: 0;
+            right: 20%;
+            animation-delay: -4s;
+        }
+        
+        @keyframes float-card {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .card-study { background: var(--academic-light); color: var(--academic-blue); }
+        .card-travel { background: #ffedd5; color: var(--sunset-orange); }
+        .card-canada { background: #fee2e2; color: #dc2626; }
+        
+        .floating-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+        
+        .floating-card p {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--academic-light);
+            color: var(--academic-blue);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .section-desc {
+            color: var(--text-light);
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-sunset);
+            transform: scaleX(0);
+            transition: var(--transition-base);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(249, 115, 22, 0.2);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-study { background: var(--academic-light); color: var(--academic-blue); }
+        .service-evisa { background: linear-gradient(135deg, #ffedd5, #fce7f3); color: var(--sunset-orange); }
+        .service-canada { background: #fee2e2; color: #dc2626; }
+        .service-additional { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #d97706; }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .badge-popular {
+            background: var(--gradient-sunset);
+            color: white;
+        }
+        
+        .badge-expert {
+            background: var(--academic-blue);
+            color: white;
+        }
+        
+        /* Why Choose Us */
+        .why-us {
+            background: var(--dark-navy);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .why-us::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        
+        .why-us .section-title,
+        .why-us .section-desc {
+            color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--academic-gold);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-item h3 {
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+        }
+        
+        .cta-box {
+            background: var(--gradient-sunset);
+            border-radius: 24px;
+            padding: 4rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+        
+        .cta-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            line-height: 1.3;
+        }
+        
+        .cta-box p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+            line-height: 1.8;
+        }
+        
+        .whatsapp-btn-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #25d366;
+            color: white;
+            padding: 1.25rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition-base);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            position: relative;
+        }
+        
+        .whatsapp-btn-large:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+        }
+        
+        .phone-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .phone-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-navy);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 1rem 0;
+            max-width: 300px;
+            line-height: 1.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+        
+        .social-links a:hover {
+            background: var(--sunset-orange);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            color: var(--academic-gold);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        body[dir="rtl"] .footer-links a:hover {
+            padding-left: 0;
+            padding-right: 5px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+        
+        body[dir="rtl"] .whatsapp-float {
+            right: auto;
+            left: 2rem;
+        }
+        
+        .whatsapp-btn {
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: var(--transition-base);
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            animation: none;
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        body[dir="rtl"] .whatsapp-tooltip {
+            right: auto;
+            left: 70px;
+        }
+        
+        .whatsapp-btn:hover .whatsapp-tooltip {
+            opacity: 1;
+            right: 75px;
+        }
+        
+        body[dir="rtl"] .whatsapp-btn:hover .whatsapp-tooltip {
+            right: auto;
+            left: 75px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text {
+                order: 1;
+            }
+            
+            .hero-visual {
+                order: 2;
+                height: 400px;
+            }
+            
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                box-shadow: var(--shadow-lg);
+            }
+            
+            body[dir="rtl"] .nav-links {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .navbar.scrolled .nav-links a {
+                color: var(--text-dark);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .floating-card {
+                padding: 1rem;
+                max-width: 200px;
+            }
+            
+            .cta-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .phone-numbers {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .whatsapp-float {
+                bottom: 1rem;
+                right: 1rem;
+            }
+            
+            body[dir="rtl"] .whatsapp-float {
+                right: auto;
+                left: 1rem;
+            }
+            
+            .language-selector {
+                margin-left: 0.5rem;
+            }
+            
+            body[dir="rtl"] .language-selector {
+                margin-right: 0.5rem;
+                margin-left: 0;
+            }
+        }
+        
+        /* Utility Classes */
+        .text-gradient {
+            background: var(--gradient-sunset);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Print Styles */
+        @media print {
+            .navbar, .whatsapp-float, .hero-visual, .cta-section {
+                display: none;
+            }
+            
+            .hero {
+                min-height: auto;
+                padding: 2rem 0;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
+        }
+    
+        /* Visa Destinations */
+        .visa-destinations {
+            display: flex;
+            gap: 0.75rem;
+            margin: 1rem 0;
+            justify-content: flex-start;
+        }
+
+        .visa-dest-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fee2e2;
+            color: #dc2626;
+            text-decoration: none;
+            transition: var(--transition-base);
+            border: 2px solid transparent;
+        }
+
+        .visa-dest-link:hover {
+            transform: translateY(-3px);
+            background: #dc2626;
+            color: white;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+
+        body[dir="rtl"] .visa-destinations {
+            justify-content: flex-end;
+        }
+
+        @media (max-width: 768px) {
+            .visa-destinations {
+                justify-content: center;
+            }
+            body[dir="rtl"] .visa-destinations {
+                justify-content: center;
+            }
+        }
+
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span data-translate="siteName">Fly for Study</span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" data-translate="navHome">Home</a></li>
+                <li><a href="pages/study-visa.html" data-translate="navStudy">Study Visa</a></li>
+                <li><a href="pages/e-visa.html" data-translate="navEvisa">E-Visa</a></li>
+                <li><a href="pages/visa.html" data-translate="navVisa">Visa</a></li>
+                <li><a href="pages/services.html" data-translate="navServices">Services</a></li>
+                <li><a href="pages/contact.html" data-translate="navContact">Contact</a></li>
+            </ul>
+            
+            <!-- Language Selector - Abbreviations -->
+            <div class="language-selector" id="langSelector">
+                <button class="lang-btn" onclick="toggleLanguageDropdown()" id="currentLangBtn" title="Select Language">
+                    EN
+                </button>
+                <div class="lang-dropdown">
+                    <button class="lang-option active" onclick="changeLanguage('en')" data-lang="en" title="English">
+                        EN
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('fr')" data-lang="fr" title="Français">
+                        FR
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('ar')" data-lang="ar" title="العربية">
+                        AR
+                    </button>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 data-translate="heroTitle">Your Gateway to a <span class="highlight">Brighter Future</span></h1>
+                <p class="hero-subtitle" data-translate="heroSubtitle">Professional visa services tailored for Algerian citizens. From world-class education opportunities to seamless travel experiences, we guide you every step of the way.</p>
+                
+                <div class="hero-buttons">
+                    <a href="pages/study-visa.html" class="btn btn-primary">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span data-translate="btnStudy">Start Your Study Journey</span>
+                    </a>
+                    <a href="pages/e-visa.html" class="btn btn-secondary">
+                        <i class="fas fa-plane"></i>
+                        <span data-translate="btnEvisa">Explore E-Visas</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <div class="card-icon card-study">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 data-translate="cardStudyTitle">Study Abroad</h3>
+                    <p data-translate="cardStudyDesc">6 Top Destinations</p>
+                </div>
+                
+                <div class="floating-card">
+                    <div class="card-icon card-travel">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 data-translate="cardEvisaTitle">E-Visa Services</h3>
+                    <p data-translate="cardEvisaDesc">8 Countries Available</p>
+                </div>
+                
+                <div class="floating-card">
+                    <div class="card-icon card-canada">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 data-translate="cardVisaTitle">Visa Expert</h3>
+                    <p data-translate="cardVisaDesc">4 Countries</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-overview">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag" data-translate="servicesTag">Our Services</span>
+                <h2 class="section-title" data-translate="servicesTitle">Comprehensive Visa Solutions</h2>
+                <p class="section-desc" data-translate="servicesDesc">From student visas to tourist e-visas, we provide end-to-end support for Algerian citizens seeking international opportunities.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon service-study">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="badge badge-popular" data-translate="badgePopular">Most Popular</span>
+                    <h3 data-translate="serviceStudyTitle">Study Visa</h3>
+                    <p data-translate="serviceStudyDesc">Comprehensive support for higher education in France, Hungary, Poland, Italy, Russia, and China. Including scholarship assistance and university placement.</p>
+                    <a href="pages/study-visa.html" class="btn btn-study" style="margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 0.9rem;">
+                        <span data-translate="btnLearnMore">Learn More</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon service-evisa">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <h3 data-translate="serviceEvisaTitle">E-Visa Services</h3>
+                    <p data-translate="serviceEvisaDesc">Quick electronic visas for Turkey, Armenia, Georgia, Albania, Azerbaijan, Thailand, Indonesia, and Vietnam. Apply online, receive via email.</p>
+                    <a href="pages/e-visa.html" class="btn btn-travel" style="margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 0.9rem;">
+                        <span data-translate="btnViewCountries">View Countries</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card fade-in" id="visa-section">
+                    <div class="service-icon service-canada">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <span class="badge badge-expert" data-translate="badgeExpert">Expert Service</span>
+                    <h3 data-translate="serviceVisaTitle">Visa Services</h3>
+                    <p data-translate="serviceVisaDesc">Specialized visa guidance for Canada, UK, Australia, and Japan. Expert handling with document optimization and interview preparation.</p>
+                    <div class="visa-destinations">
+                        <a href="pages/canada-visa.html" class="visa-dest-link" title="Canada">
+                            <i class="fas fa-maple-leaf"></i>
+                        </a>
+                        <a href="pages/uk-visa.html" class="visa-dest-link" title="UK">
+                            <i class="fas fa-crown"></i>
+                        </a>
+                        <a href="pages/australia-visa.html" class="visa-dest-link" title="Australia">
+                            <i class="fas fa-globe-oceania"></i>
+                        </a>
+                        <a href="pages/japan-visa.html" class="visa-dest-link" title="Japan">
+                            <i class="fas fa-torii-gate"></i>
+                        </a>
+                    </div>
+                    <a href="pages/visa.html" class="btn" style="margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 0.9rem; background: #dc2626; color: white;">
+                        <span data-translate="btnGetStarted">Get Started</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon service-additional">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3 data-translate="serviceAdditionalTitle">Additional Services</h3>
+                    <p data-translate="serviceAdditionalDesc">Flight reservations, hotel bookings, travel insurance, document translation, appointment booking, and priority processing services.</p>
+                    <a href="pages/services.html" class="btn" style="margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 0.9rem; background: #d97706; color: white;">
+                        <span data-translate="btnViewServices">View Services</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag" style="background: rgba(255,255,255,0.1); color: var(--academic-gold);" data-translate="whyUsTag">Why Choose Us</span>
+                <h2 class="section-title" data-translate="whyUsTitle">Trusted by Thousands of Algerian Students & Travelers</h2>
+                <p class="section-desc" data-translate="whyUsDesc">We combine local expertise with international standards to deliver exceptional visa services.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 data-translate="feature1Title">Zero Service Fees</h3>
+                    <p data-translate="feature1Desc">We don't charge for our consultation and application assistance services. You only pay official government fees.</p>
+                </div>
+                
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 data-translate="feature2Title">Fast Processing</h3>
+                    <p data-translate="feature2Desc">Quick turnaround times with priority handling options. Most e-visas processed within 24-72 hours.</p>
+                </div>
+                
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 data-translate="feature3Title">Secure & Reliable</h3>
+                    <p data-translate="feature3Desc">Your data is protected with enterprise-grade security. Trusted partnerships with embassies and visa centers.</p>
+                </div>
+                
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 data-translate="feature4Title">24/7 Support</h3>
+                    <p data-translate="feature4Desc">Round-the-clock assistance via WhatsApp. Dedicated support team speaking Arabic, French, and English.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box fade-in">
+                <h2 data-translate="ctaTitle">Ready to Start Your Journey?</h2>
+                <p data-translate="ctaDesc">Get in touch with our visa experts today. Free consultation and personalized guidance for your specific needs.</p>
+                
+                <a href="https://wa.me/213XXXXXXXXX" class="whatsapp-btn-large" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-translate="btnWhatsapp">Chat on WhatsApp</span>
+                </a>
+                
+                <div class="phone-numbers">
+                    <span class="phone-tag"><i class="fas fa-phone"></i> <span data-translate="phoneEvisa">E-Visa: +213 555 XXX XXX</span></span>
+                    <span class="phone-tag"><i class="fas fa-phone"></i> <span data-translate="phoneStudy">Study: +213 555 XXX XXX</span></span>
+                    <span class="phone-tag"><i class="fas fa-phone"></i> <span data-translate="phoneCanada">Canada: +213 555 XXX XXX</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="color: white;">
+                        <div class="logo-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span data-translate="siteName">Fly for Study</span>
+                    </a>
+                    <p data-translate="footerDesc">Your trusted partner for international education and travel opportunities. Serving Algerian citizens with professional visa services since 2020.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 data-translate="footerServices">Services</h4>
+                    <ul>
+                        <li><a href="pages/study-visa.html" data-translate="navStudy">Study Visa</a></li>
+                        <li><a href="pages/e-visa.html" data-translate="navEvisa">E-Visa</a></li>
+                        <li><a href="pages/visa.html" data-translate="navVisa">Visa</a></li>
+                        <li><a href="pages/services.html" data-translate="navServices">Additional Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 data-translate="footerDestinations">Destinations</h4>
+                    <ul>
+                        <li><a href="pages/study-visa.html#france">France</a></li>
+                        <li><a href="pages/study-visa.html#canada">Canada</a></li>
+                        <li><a href="pages/e-visa.html#turkey">Turkey</a></li>
+                        <li><a href="pages/e-visa.html" data-translate="footerViewAll">View All</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 data-translate="footerContact">Contact</h4>
+                    <ul>
+                        <li><a href="pages/contact.html" data-translate="navContact">Contact Us</a></li>
+                        <li><a href="mailto:contact@maghrebcampus.com">contact@maghrebcampus.com</a></li>
+                        <li><a href="#">Algiers, Algeria</a></li>
+                        <li><a href="#" data-translate="footerHours">Sun - Thu: 9AM - 6PM</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 <span data-translate="siteName">Fly for Study</span>. <span data-translate="footerRights">All rights reserved. Designed for Algerian Excellence.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/213XXXXXXXXX" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-tooltip" data-translate="whatsappTooltip">Chat with us!</span>
+        </a>
+    </div>
+
+    <script>
+        // Translation Data
+        const translations = {
+            en: {
+                siteName: "Fly for Study",
+                navHome: "Home",
+                navStudy: "Study Visa",
+                navEvisa: "E-Visa",
+                navVisa: "Visa",
+                navVisa: "Visa",
+                navCanada: "Canada",
+                navServices: "Services",
+                navContact: "Contact",
+                heroTitle: "Your Gateway to a <span class='highlight'>Brighter Future</span>",
+                heroSubtitle: "Professional visa services tailored for Algerian citizens. From world-class education opportunities to seamless travel experiences, we guide you every step of the way.",
+                btnStudy: "Start Your Study Journey",
+                btnEvisa: "Explore E-Visas",
+                cardStudyTitle: "Study Abroad",
+                cardStudyDesc: "6 Top Destinations",
+                cardEvisaTitle: "E-Visa Services",
+                cardEvisaDesc: "8 Countries Available",
+                cardVisaTitle: "Visa Expert",
+                cardVisaDesc: "4 Countries",
+                cardCanadaTitle: "Canada Expert",
+                cardCanadaDesc: "Specialized Support",
+                servicesTag: "Our Services",
+                servicesTitle: "Comprehensive Visa Solutions",
+                servicesDesc: "From student visas to tourist e-visas, we provide end-to-end support for Algerian citizens seeking international opportunities.",
+                badgePopular: "Most Popular",
+                badgeExpert: "Expert Service",
+                serviceStudyTitle: "Study Visa",
+                serviceStudyDesc: "Comprehensive support for higher education in France, Hungary, Poland, Italy, Russia, and China. Including scholarship assistance and university placement.",
+                serviceEvisaTitle: "E-Visa Services",
+                serviceEvisaDesc: "Quick electronic visas for Turkey, Armenia, Georgia, Albania, Azerbaijan, Thailand, Indonesia, and Vietnam. Apply online, receive via email.",
+                serviceVisaTitle: "Visa Services",
+                serviceVisaDesc: "Specialized visa guidance for Canada, UK, Australia, and Japan. Expert handling with document optimization and interview preparation.",
+                serviceCanadaTitle: "Canada Visa",
+                serviceCanadaDesc: "Specialized guidance for Canadian visitor visas. Expert handling of high-refusal-rate cases with document optimization and interview preparation.",
+                serviceAdditionalTitle: "Additional Services",
+                serviceAdditionalDesc: "Flight reservations, hotel bookings, travel insurance, document translation, appointment booking, and priority processing services.",
+                btnLearnMore: "Learn More",
+                btnViewCountries: "View Countries",
+                btnGetStarted: "Get Started",
+                btnViewServices: "View Services",
+                whyUsTag: "Why Choose Us",
+                whyUsTitle: "Trusted by Thousands of Algerian Students & Travelers",
+                whyUsDesc: "We combine local expertise with international standards to deliver exceptional visa services.",
+                feature1Title: "Zero Service Fees",
+                feature1Desc: "We don't charge for our consultation and application assistance services. You only pay official government fees.",
+                feature2Title: "Fast Processing",
+                feature2Desc: "Quick turnaround times with priority handling options. Most e-visas processed within 24-72 hours.",
+                feature3Title: "Secure & Reliable",
+                feature3Desc: "Your data is protected with enterprise-grade security. Trusted partnerships with embassies and visa centers.",
+                feature4Title: "24/7 Support",
+                feature4Desc: "Round-the-clock assistance via WhatsApp. Dedicated support team speaking Arabic, French, and English.",
+                ctaTitle: "Ready to Start Your Journey?",
+                ctaDesc: "Get in touch with our visa experts today. Free consultation and personalized guidance for your specific needs.",
+                btnWhatsapp: "Chat on WhatsApp",
+                phoneEvisa: "E-Visa: +213 555 XXX XXX",
+                phoneStudy: "Study: +213 555 XXX XXX",
+                phoneCanada: "Canada: +213 555 XXX XXX",
+                footerDesc: "Your trusted partner for international education and travel opportunities. Serving Algerian citizens with professional visa services since 2020.",
+                footerServices: "Services",
+                footerDestinations: "Destinations",
+                footerViewAll: "View All",
+                footerContact: "Contact",
+                footerHours: "Sun - Thu: 9AM - 6PM",
+                footerRights: "All rights reserved. Designed for Algerian Excellence.",
+                whatsappTooltip: "Chat with us!"
+            },
+            fr: {
+                siteName: "Fly for Study",
+                navHome: "Accueil",
+                navStudy: "Visa Étudiant",
+                navEvisa: "E-Visa",
+                navVisa: "Visa",
+                navCanada: "Canada",
+                navServices: "Services",
+                navContact: "Contact",
+                heroTitle: "Votre Passage vers un <span class='highlight'>Avenir Brillant</span>",
+                heroSubtitle: "Services de visa professionnels pour les citoyens algériens. Des opportunités d'éducation mondiales aux expériences de voyage fluides, nous vous guidons à chaque étape.",
+                btnStudy: "Commencez Votre Parcours d'Études",
+                btnEvisa: "Explorer les E-Visas",
+                cardStudyTitle: "Étudier à l'Étranger",
+                cardStudyDesc: "6 Meilleures Destinations",
+                cardEvisaTitle: "Services E-Visa",
+                cardEvisaDesc: "8 Pays Disponibles",
+                cardVisaTitle: "Expert Visa",
+                cardVisaDesc: "4 Pays",
+                cardCanadaTitle: "Expert Canada",
+                cardCanadaDesc: "Support Spécialisé",
+                servicesTag: "Nos Services",
+                servicesTitle: "Solutions de Visa Complètes",
+                servicesDesc: "Des visas étudiants aux e-visas touristiques, nous fournissons un support complet pour les citoyens algériens cherchant des opportunités internationales.",
+                badgePopular: "Plus Populaire",
+                badgeExpert: "Service Expert",
+                serviceStudyTitle: "Visa Étudiant",
+                serviceStudyDesc: "Support complet pour l'enseignement supérieur en France, Hongrie, Pologne, Italie, Russie et Chine. Y compris l'aide aux bourses et le placement universitaire.",
+                serviceEvisaTitle: "Services E-Visa",
+                serviceEvisaDesc: "Visas électroniques rapides pour la Turquie, l'Arménie, la Géorgie, l'Albanie, l'Azerbaïdjan, la Thaïlande, l'Indonésie et le Vietnam. Postulez en ligne, recevez par email.",
+                serviceVisaTitle: "Services Visa",
+                serviceVisaDesc: "Conseils visa spécialisés pour le Canada, le Royaume-Uni, l'Australie et le Japon. Gestion experte avec optimisation des documents et préparation aux entretiens.",
+                serviceCanadaTitle: "Visa Canada",
+                serviceCanadaDesc: "Conseils spécialisés pour les visas de visiteur canadiens. Gestion experte des cas à taux de refus élevé avec optimisation des documents et préparation aux entretiens.",
+                serviceAdditionalTitle: "Services Additionnels",
+                serviceAdditionalDesc: "Réservations de vols, hôtels, assurances voyage, traduction de documents, prise de rendez-vous et services de traitement prioritaire.",
+                btnLearnMore: "En Savoir Plus",
+                btnViewCountries: "Voir les Pays",
+                btnGetStarted: "Commencer",
+                btnViewServices: "Voir les Services",
+                whyUsTag: "Pourquoi Nous Choisir",
+                whyUsTitle: "Fait Confiance par des Milliers d'Étudiants et Voyageurs Algériens",
+                whyUsDesc: "Nous combinons l'expertise locale avec les standards internationaux pour offrir des services de visa exceptionnels.",
+                feature1Title: "Frais de Service Zéro",
+                feature1Desc: "Nous ne facturons pas nos services de consultation et d'assistance aux demandes. Vous ne payez que les frais officiels du gouvernement.",
+                feature2Title: "Traitement Rapide",
+                feature2Desc: "Délais d'exécution rapides avec options de traitement prioritaire. La plupart des e-visas traités sous 24-72 heures.",
+                feature3Title: "Sécurisé & Fiable",
+                feature3Desc: "Vos données sont protégées par une sécurité de niveau entreprise. Partenariats de confiance avec les ambassades et centres de visa.",
+                feature4Title: "Support 24/7",
+                feature4Desc: "Assistance permanente via WhatsApp. Équipe de support dédiée parlant arabe, français et anglais.",
+                ctaTitle: "Prêt à Commencer Votre Voyage ?",
+                ctaDesc: "Contactez nos experts en visa dès aujourd'hui. Consultation gratuite et conseils personnalisés pour vos besoins spécifiques.",
+                btnWhatsapp: "Discuter sur WhatsApp",
+                phoneEvisa: "E-Visa : +213 555 XXX XXX",
+                phoneStudy: "Études : +213 555 XXX XXX",
+                phoneCanada: "Canada : +213 555 XXX XXX",
+                footerDesc: "Votre partenaire de confiance pour l'éducation internationale et les opportunités de voyage. Au service des citoyens algériens avec des services de visa professionnels depuis 2020.",
+                footerServices: "Services",
+                footerDestinations: "Destinations",
+                footerViewAll: "Voir Tout",
+                footerContact: "Contact",
+                footerHours: "Dim - Jeu : 9h - 18h",
+                footerRights: "Tous droits réservés. Conçu pour l'Excellence Algérienne.",
+                whatsappTooltip: "Discutez avec nous !"
+            },
+            ar: {
+                siteName: "فلاي فور ستادي",
+                navHome: "الرئيسية",
+                navStudy: "تأشيرة الدراسة",
+                navEvisa: "التأشيرة الإلكترونية",
+                navVisa: "تأشيرة",
+                navCanada: "كندا",
+                navServices: "الخدمات",
+                navContact: "اتصل بنا",
+                heroTitle: "<span class='highlight'>مستقبل أكثر إشراقاً</span> نحو بوابتك",
+                heroSubtitle: "خدمات تأشيرات احترافية مصممة للمواطنين الجزائريين. من فرص التعليم العالمية إلى تجارب السفر السلسة، نرشدك في كل خطوة على الطريق.",
+                btnStudy: "ابدأ رحلتك الدراسية",
+                btnEvisa: "استكشف التأشيرات الإلكترونية",
+                cardStudyTitle: "الدراسة في الخارج",
+                cardStudyDesc: "٦ وجهات متميزة",
+                cardEvisaTitle: "خدمات التأشيرة الإلكترونية",
+                cardEvisaDesc: "٨ دول متاحة",
+                cardVisaTitle: "خبير التأشيرات",
+                cardVisaDesc: "٤ دول",
+                cardCanadaTitle: "خبير كندا",
+                cardCanadaDesc: "دعم متخصص",
+                servicesTag: "خدماتنا",
+                servicesTitle: "حلول تأشيرات شاملة",
+                servicesDesc: "من تأشيرات الطلاب إلى التأشيرات الإلكترونية السياحية، نقدم دعماً شاملاً للمواطنين الجزائريين الباحثين عن فرص دولية.",
+                badgePopular: "الأكثر شعبية",
+                badgeExpert: "خدمة الخبراء",
+                serviceStudyTitle: "تأشيرة الدراسة",
+                serviceStudyDesc: "دعم شامل للتعليم العالي في فرنسا والمجر وبولندا وإيطاليا وروسيا والصين. بما في ذلك المساعدة في المنح الدراسية والقبول الجامعي.",
+                serviceEvisaTitle: "خدمات التأشيرة الإلكترونية",
+                serviceEvisaDesc: "تأشيرات إلكترونية سريعة لتركيا وأرمينيا وجورجيا وألبانيا وأذربيجان وتايلاند وإندونيسيا وفيتنام. قدم عبر الإنترنت، استلم عبر البريد الإلكتروني.",
+                serviceVisaTitle: "خدمات التأشيرات",
+                serviceVisaDesc: "إرشادات تأشيرات متخصصة لكندا والمملكة المتحدة وأستراليا واليابان. التعامل الخبير مع تحسين المستندات والتحضير للمقابلات.",
+                serviceCanadaTitle: "تأشيرة كندا",
+                serviceCanadaDesc: "إرشادات متخصصة لتأشيرات الزائر الكندية. التعامل الخبير مع الحالات ذات معدلات الرفض العالية مع تحسين المستندات والتحضير للمقابلات.",
+                serviceAdditionalTitle: "خدمات إضافية",
+                serviceAdditionalDesc: "حجوزات الطيران والفنادق والتأمين السياحي وترجمة المستندات وحجز المواعيد وخدمات المعالجة السريعة.",
+                btnLearnMore: "اعرف المزيد",
+                btnViewCountries: "عرض الدول",
+                btnGetStarted: "ابدأ الآن",
+                btnViewServices: "عرض الخدمات",
+                whyUsTag: "لماذا تختارنا",
+                whyUsTitle: "موثوق به من قبل آلاف الطلاب والمسافرين الجزائريين",
+                whyUsDesc: "نحن نجمع بين الخبرة المحلية والمعايير الدولية لتقديم خدمات تأشيرات استثنائية.",
+                feature1Title: "صفر رسوم الخدمة",
+                feature1Desc: "لا نفرض رسوماً على خدمات الاستشارة والمساعدة في التقديم. تدفع فقط الرسوم الحكومية الرسمية.",
+                feature2Title: "معالجة سريعة",
+                feature2Desc: "أوقات معالجة سريعة مع خيارات المعالجة السريعة. معظم التأشيرات الإلكترونية تُعالج خلال ٢٤-٧٢ ساعة.",
+                feature3Title: "آمن وموثوق",
+                feature3Desc: "بياناتك محمية بأمان على مستوى المؤسسات. شراكات موثوقة مع السفارات ومراكز التأشيرات.",
+                feature4Title: "دعم على مدار الساعة",
+                feature4Desc: "مساعدة متواصلة عبر الواتساب. فريق دعم مخصص يتحدث العربية والفرنسية والإنجليزية.",
+                ctaTitle: "مستعد لبدء رحلتك؟",
+                ctaDesc: "تواصل مع خبراء التأشيرات لدينا اليوم. استشارة مجانية وتوجيه مخصص لاحتياجاتك الخاصة.",
+                btnWhatsapp: "دردش على الواتساب",
+                phoneEvisa: "التأشيرة الإلكترونية: ٥٥٥ XXX XXX ٢١٣+",
+                phoneStudy: "الدراسة: ٥٥٥ XXX XXX ٢١٣+",
+                phoneCanada: "كندا: ٥٥٥ XXX XXX ٢١٣+",
+                footerDesc: "شريكك الموثوق للتعليم الدولي وفرص السفر. خدمة المواطنين الجزائريين بخدمات تأشيرات احترافية منذ ٢٠٢٠.",
+                footerServices: "الخدمات",
+                footerDestinations: "الوجهات",
+                footerViewAll: "عرض الكل",
+                footerContact: "اتصل بنا",
+                footerHours: "الأحد - الخميس: ٩ ص - ٦ م",
+                footerRights: "جميع الحقوق محفوظة. مصمم للتميز الجزائري.",
+                whatsappTooltip: "دردش معنا!"
+            }
+        };
+
+        // Language Management
+        let currentLanguage = localStorage.getItem('language') || 'en';
+
+        function toggleLanguageDropdown() {
+            document.getElementById('langSelector').classList.toggle('active');
+        }
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            
+            // Update UI
+            updateLanguageUI();
+            
+            // Close dropdown
+            document.getElementById('langSelector').classList.remove('active');
+            
+            // Apply translations
+            applyTranslations();
+            
+            // Handle RTL for Arabic
+            if (lang === 'ar') {
+                document.body.setAttribute('dir', 'rtl');
+                document.body.style.direction = 'rtl';
+                document.body.classList.add('arabic-text');
+            } else {
+                document.body.removeAttribute('dir');
+                document.body.style.direction = 'ltr';
+                document.body.classList.remove('arabic-text');
+            }
+        }
+
+        function updateLanguageUI() {
+            const abbreviations = { en: 'EN', fr: 'FR', ar: 'AR' };
+            document.getElementById('currentLangBtn').textContent = abbreviations[currentLanguage];
+            
+            // Update active state in dropdown
+            document.querySelectorAll('.lang-option').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === currentLanguage) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        function applyTranslations() {
+            const texts = translations[currentLanguage];
+            
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.dataset.translate;
+                if (texts[key]) {
+                    element.innerHTML = texts[key];
+                }
+            });
+            
+            // Update page title
+            const titles = {
+                en: "Your Gateway to Global Education & Travel",
+                fr: "Votre Passage vers l'Éducation et les Voyages",
+                ar: "بوابتك للتعليم والسفر العالمي"
+            };
+            document.title = texts.siteName + " | " + titles[currentLanguage];
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-selector')) {
+                document.getElementById('langSelector').classList.remove('active');
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLanguageUI();
+            applyTranslations();
+            
+            if (currentLanguage === 'ar') {
+                document.body.setAttribute('dir', 'rtl');
+                document.body.style.direction = 'rtl';
+                document.body.classList.add('arabic-text');
+            }
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add parallax effect to gradient orbs
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.gradient-orb');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                const xOffset = (0.5 - x) * speed;
+                const yOffset = (0.5 - y) * speed;
+                orb.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

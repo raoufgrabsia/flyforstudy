@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | Maghreb Campus Admin</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --academic-blue: #1e3a8a;
+            --academic-gold: #f59e0b;
+            --dark-navy: #0f172a;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --sidebar-width: 280px;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-light); color: var(--text-dark); }
+        
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: var(--sidebar-width);
+            background: var(--dark-navy);
+            color: white;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .sidebar-header { margin-bottom: 3rem; }
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+        .sidebar-logo i {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f97316, #ec4899);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-section { margin-bottom: 2rem; }
+        .nav-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            transition: 0.3s ease;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+        }
+        
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-logout {
+            background: rgba(220, 38, 38, 0.1);
+            color: #dc2626;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .section-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-card h2 {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--academic-blue);
+        }
+        
+        .form-group small {
+            display: block;
+            margin-top: 0.25rem;
+            color: var(--text-light);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #059669;
+        }
+        
+        .social-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .save-notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: #10b981;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .form-row,
+            .social-inputs {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="sidebar-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Maghreb Campus</span>
+            </a>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-section-title">Main</div>
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-section-title">Management</div>
+            <a href="manage-prices.html" class="nav-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Prices & Fees</span>
+            </a>
+            <a href="manage-documents.html" class="nav-item">
+                <i class="fas fa-list-check"></i>
+                <span>Document Requirements</span>
+            </a>
+            <a href="settings.html" class="nav-item active">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="top-bar">
+            <h1>Settings</h1>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+        
+        <div class="section-card">
+            <h2><i class="fas fa-phone" style="color: var(--academic-blue);"></i> Contact Information</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>E-Visa Phone Number</label>
+                    <input type="tel" id="phoneEvisa" placeholder="+213 555 XXX XXX">
+                </div>
+                <div class="form-group">
+                    <label>Study Visa Phone Number</label>
+                    <input type="tel" id="phoneStudy" placeholder="+213 555 XXX XXX">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Canada Visa Phone Number</label>
+                    <input type="tel" id="phoneCanada" placeholder="+213 555 XXX XXX">
+                </div>
+                <div class="form-group">
+                    <label>General Services Phone</label>
+                    <input type="tel" id="phoneGeneral" placeholder="+213 555 XXX XXX">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>WhatsApp Number (Primary)</label>
+                <input type="tel" id="whatsappNumber" placeholder="+213 555 XXX XXX">
+                <small>This number will be used for all WhatsApp buttons across the website</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="emailAddress" placeholder="contact@maghrebcampus.com">
+            </div>
+        </div>
+        
+        <div class="section-card">
+            <h2><i class="fas fa-clock" style="color: var(--academic-blue);"></i> Business Information</h2>
+            
+            <div class="form-group">
+                <label>Working Hours</label>
+                <input type="text" id="workingHours" placeholder="Sunday - Thursday, 9AM - 6PM">
+            </div>
+            
+            <div class="form-group">
+                <label>Office Address</label>
+                <textarea id="officeAddress" rows="3" placeholder="Algiers, Algeria"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Google Maps Embed URL</label>
+                <input type="url" id="mapsUrl" placeholder="https://www.google.com/maps/embed...">
+                <small>Used for the contact page map</small>
+            </div>
+        </div>
+        
+        <div class="section-card">
+            <h2><i class="fas fa-share-alt" style="color: var(--academic-blue);"></i> Social Media Links</h2>
+            
+            <div class="social-inputs">
+                <div class="form-group">
+                    <label>Facebook</label>
+                    <input type="url" id="facebookUrl" placeholder="https://facebook.com/...">
+                </div>
+                <div class="form-group">
+                    <label>Instagram</label>
+                    <input type="url" id="instagramUrl" placeholder="https://instagram.com/...">
+                </div>
+                <div class="form-group">
+                    <label>LinkedIn</label>
+                    <input type="url" id="linkedinUrl" placeholder="https://linkedin.com/...">
+                </div>
+                <div class="form-group">
+                    <label>Twitter/X</label>
+                    <input type="url" id="twitterUrl" placeholder="https://twitter.com/...">
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-card">
+            <h2><i class="fas fa-lock" style="color: var(--academic-blue);"></i> Admin Account</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Current Password</label>
+                    <input type="password" id="currentPassword" placeholder="Enter current password">
+                </div>
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" id="newPassword" placeholder="Enter new password">
+                </div>
+            </div>
+            
+            <button class="btn btn-success" onclick="changePassword()" style="margin-top: 0.5rem;">
+                <i class="fas fa-key"></i> Change Password
+            </button>
+        </div>
+        
+        <button class="btn btn-success" onclick="saveSettings()" style="padding: 1rem 2rem; font-size: 1rem;">
+            <i class="fas fa-save"></i> Save All Settings
+        </button>
+    </main>
+    
+    <div class="save-notification" id="saveNotification">
+        <i class="fas fa-check-circle"></i> Settings saved successfully!
+    </div>
+
+    <script>
+        if (localStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+        
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = 'login.html';
+        }
+        
+        // Load saved settings
+        function loadSettings() {
+            const settings = JSON.parse(localStorage.getItem('siteSettings') || '{}');
+            
+            document.getElementById('phoneEvisa').value = settings.phoneEvisa || '';
+            document.getElementById('phoneStudy').value = settings.phoneStudy || '';
+            document.getElementById('phoneCanada').value = settings.phoneCanada || '';
+            document.getElementById('phoneGeneral').value = settings.phoneGeneral || '';
+            document.getElementById('whatsappNumber').value = settings.whatsappNumber || '';
+            document.getElementById('emailAddress').value = settings.emailAddress || 'contact@maghrebcampus.com';
+            document.getElementById('workingHours').value = settings.workingHours || 'Sunday - Thursday, 9AM - 6PM';
+            document.getElementById('officeAddress').value = settings.officeAddress || 'Algiers, Algeria';
+            document.getElementById('mapsUrl').value = settings.mapsUrl || '';
+            document.getElementById('facebookUrl').value = settings.facebookUrl || '';
+            document.getElementById('instagramUrl').value = settings.instagramUrl || '';
+            document.getElementById('linkedinUrl').value = settings.linkedinUrl || '';
+            document.getElementById('twitterUrl').value = settings.twitterUrl || '';
+        }
+        
+        function saveSettings() {
+            const settings = {
+                phoneEvisa: document.getElementById('phoneEvisa').value,
+                phoneStudy: document.getElementById('phoneStudy').value,
+                phoneCanada: document.getElementById('phoneCanada').value,
+                phoneGeneral: document.getElementById('phoneGeneral').value,
+                whatsappNumber: document.getElementById('whatsappNumber').value,
+                emailAddress: document.getElementById('emailAddress').value,
+                workingHours: document.getElementById('workingHours').value,
+                officeAddress: document.getElementById('officeAddress').value,
+                mapsUrl: document.getElementById('mapsUrl').value,
+                facebookUrl: document.getElementById('facebookUrl').value,
+                instagramUrl: document.getElementById('instagramUrl').value,
+                linkedinUrl: document.getElementById('linkedinUrl').value,
+                twitterUrl: document.getElementById('twitterUrl').value
+            };
+            
+            localStorage.setItem('siteSettings', JSON.stringify(settings));
+            
+            // Show notification
+            const notif = document.getElementById('saveNotification');
+            notif.style.display = 'block';
+            setTimeout(() => {
+                notif.style.display = 'none';
+            }, 3000);
+        }
+        
+        function changePassword() {
+            const current = document.getElementById('currentPassword').value;
+            const newPass = document.getElementById('newPassword').value;
+            
+            if (current !== 'maghreb2024') {
+                alert('Current password is incorrect!');
+                return;
+            }
+            
+            if (newPass.length < 6) {
+                alert('New password must be at least 6 characters!');
+                return;
+            }
+            
+            alert('Password changed successfully! (Demo: still uses "maghreb2024" until backend is connected)');
+            document.getElementById('currentPassword').value = '';
+            document.getElementById('newPassword').value = '';
+        }
+        
+        loadSettings();
+    </script>
+
+</body>
+</html>

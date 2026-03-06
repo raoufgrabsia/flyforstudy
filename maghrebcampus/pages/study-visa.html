@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Visa Programs | Maghreb Campus</title>
+    <meta name="description" content="Comprehensive support for Algerian students seeking higher education abroad. France, Hungary, Poland, Italy, Russia, and China.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --academic-blue: #1e3a8a;
+            --academic-gold: #f59e0b;
+            --academic-light: #dbeafe;
+            --sunset-orange: #f97316;
+            --dark-navy: #0f172a;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --gradient-study: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f59e0b 100%);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', sans-serif; color: var(--text-dark); line-height: 1.6; background: var(--bg-light); }
+        
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 0;
+            transition: 0.3s ease; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--academic-blue); font-weight: 800; font-size: 1.5rem; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #f97316, #ec4899); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.15s ease; position: relative; }
+        .nav-links a:hover { color: var(--academic-blue); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-dark); font-size: 1.5rem; cursor: pointer; }
+        
+        .page-header {
+            background: var(--gradient-study);
+            padding: 10rem 0 6rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+        .page-header h1 { font-size: 3rem; margin-bottom: 1rem; position: relative; }
+        .page-header p { font-size: 1.25rem; opacity: 0.9; max-width: 700px; margin: 0 auto 0.5rem; position: relative; }
+        
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+        
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+        
+        .country-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .country-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            border-color: var(--academic-blue);
+        }
+        
+        .country-header {
+            padding: 2rem;
+            color: white;
+            position: relative;
+        }
+        
+        .country-france { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+        .country-hungary { background: linear-gradient(135deg, #059669, #10b981); }
+        .country-poland { background: linear-gradient(135deg, #dc2626, #ef4444); }
+        .country-italy { background: linear-gradient(135deg, #059669, #34d399); }
+        .country-russia { background: linear-gradient(135deg, #dc2626, #b91c1c); }
+        .country-china { background: linear-gradient(135deg, #eab308, #facc15); color: var(--dark-navy) !important; }
+        
+        .country-flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .country-header h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .partner-info {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        
+        .country-body {
+            padding: 2rem;
+        }
+        
+        .fee-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .fee-row:last-child {
+            border-bottom: none;
+        }
+        
+        .fee-label {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+        
+        .fee-value {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .fee-zero {
+            color: #10b981;
+            font-size: 1.25rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--academic-blue);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.3);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+        
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            padding: 2rem;
+            background: var(--gradient-study);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .document-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .document-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .document-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--academic-blue);
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+        
+        .timeline-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+        
+        .timeline-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--academic-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: 700;
+        }
+        
+        .timeline-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        .info-box {
+            background: var(--academic-light);
+            border-left: 4px solid var(--academic-blue);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+        .whatsapp-btn {
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .countries-grid { grid-template-columns: 1fr; }
+            .timeline { flex-direction: column; gap: 1rem; }
+            .timeline::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>Maghreb Campus</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="study-visa.html">Study Visa</a></li>
+                <li><a href="e-visa.html">E-Visa</a></li>
+                <li><a href="canada-visa.html">Canada</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Study Visa Programs</h1>
+            <p>Your pathway to world-class education</p>
+            <p style="font-size: 1rem; opacity: 0.8; margin-top: 1rem;">Comprehensive support for Algerian students seeking higher education abroad</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="countries-grid" id="countriesGrid">
+            <!-- Countries populated by JS -->
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="countryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+                <div id="modalFlag" style="font-size: 3rem; margin-bottom: 0.5rem;"></div>
+                <h2 id="modalTitle"></h2>
+                <p id="modalPartner"></p>
+            </div>
+            <div class="modal-body">
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i> <strong>Free Service:</strong> We charge 0 DZD for our visa consultation and application assistance. You only pay official government and university fees.
+                </div>
+                
+                <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; color: var(--text-dark);">
+                    <i class="fas fa-file-alt" style="color: var(--academic-blue);"></i> Required Documents
+                </h3>
+                <ul class="document-list" id="modalDocuments"></ul>
+                
+                <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; color: var(--text-dark);">
+                    <i class="fas fa-dollar-sign" style="color: var(--academic-blue);"></i> Fee Structure
+                </h3>
+                <div id="modalFees"></div>
+                
+                <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; color: var(--text-dark);">
+                    <i class="fas fa-clock" style="color: var(--academic-blue);"></i> Processing Timeline
+                </h3>
+                <div class="timeline" id="modalTimeline"></div>
+                
+                <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; color: var(--text-dark);">
+                    <i class="fas fa-plus-circle" style="color: var(--academic-blue);"></i> Additional Services
+                </h3>
+                <ul id="modalServices"></ul>
+                
+                <a href="#" class="btn btn-primary" id="modalApplyBtn" style="margin-top: 2rem;">
+                    <i class="fab fa-whatsapp"></i> Start Application via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="whatsapp-float">
+        <a href="https://wa.me/213XXXXXXXXX" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        const countries = [
+            {
+                id: 'france',
+                name: 'France',
+                flag: '🇫🇷',
+                class: 'country-france',
+                partner: 'Campus France + Paris-Saclay Partnership',
+                processingTime: '2-4 weeks',
+                officialFees: '€99 EUR visa + €99 OFII',
+                docCount: 15,
+                documents: [
+                    'Campus France authorization (Etudes en France)',
+                    'Acceptance letter from French institution',
+                    'Financial guarantee (€615/month minimum)',
+                    'OFII form (Office Français de l\'Immigration)',
+                    'Language proficiency proof (TCF/TEF B2 or DELF)',
+                    'Valid passport (10 years, issued within last 10 years)',
+                    'Long-stay visa application form',
+                    'Passport photos (ICAO standards)',
+                    'Birth certificate (translated + apostilled)',
+                    'Academic transcripts and diplomas',
+                    'Motivation letter in French',
+                    'CV/Resume in French',
+                    'Proof of accommodation in France',
+                    'Travel insurance (€30,000 coverage)',
+                    'Flight reservation'
+                ],
+                timeline: [
+                    { step: '1', label: 'Campus France' },
+                    { step: '2', label: 'University App' },
+                    { step: '3', label: 'Visa Application' },
+                    { step: '4', label: 'OFII Registration' }
+                ],
+                services: [
+                    'Campus France account setup and guidance',
+                    'University application review',
+                    'OFII form completion assistance',
+                    'Financial document preparation',
+                    'Interview preparation',
+                    'Accommodation search support'
+                ]
+            },
+            {
+                id: 'hungary',
+                name: 'Hungary',
+                flag: '🇭🇺',
+                class: 'country-hungary',
+                partner: 'Stipendium Hungaricum Scholarship',
+                processingTime: '4-6 weeks',
+                officialFees: '€60 visa + HUF 18,000 residence',
+                docCount: 14,
+                documents: [
+                    'Stipendium Hungaricum scholarship letter',
+                    'University acceptance letter',
+                    'Medical certificate (HIV, Hepatitis B/C tests)',
+                    'Criminal record certificate (apostilled)',
+                    'Valid passport',
+                    'Visa application form',
+                    'Passport photos',
+                    'Proof of accommodation',
+                    'Financial proof or scholarship confirmation',
+                    'Travel insurance',
+                    'Academic documents (translated)',
+                    'Motivation letter',
+                    'CV in English',
+                    'Language proficiency proof (if applicable)'
+                ],
+                timeline: [
+                    { step: '1', label: 'Scholarship Apply' },
+                    { step: '2', label: 'Medical Tests' },
+                    { step: '3', label: 'Visa Submission' },
+                    { step: '4', label: 'Residence Permit' }
+                ],
+                services: [
+                    'Stipendium Hungaricum application guidance',
+                    'Medical test appointment booking',
+                    'Document translation coordination',
+                    'Criminal record procurement assistance',
+                    'Accommodation arrangement',
+                    'Airport pickup coordination'
+                ]
+            },
+            {
+                id: 'poland',
+                name: 'Poland',
+                flag: '🇵🇱',
+                class: 'country-poland',
+                partner: 'Polish Universities + NAWA',
+                processingTime: '4-8 weeks',
+                officialFees: '€80 visa + PLN 340 residence',
+                docCount: 14,
+                documents: [
+                    'University acceptance letter',
+                    'Tuition fee payment receipt (if applicable)',
+                    'Financial proof (€2,500 minimum)',
+                    'Valid passport',
+                    'Visa application form',
+                    'Passport photos',
+                    'Travel medical insurance',
+                    'Accommodation confirmation',
+                    'Flight reservation',
+                    'Academic documents (legalized)',
+                    'Birth certificate (translated)',
+                    'Criminal record check',
+                    'Health certificate',
+                    'Motivation letter'
+                ],
+                timeline: [
+                    { step: '1', label: 'University Admission' },
+                    { step: '2', label: 'Document Legalization' },
+                    { step: '3', label: 'Visa Application' },
+                    { step: '4', label: 'Residence Card' }
+                ],
+                services: [
+                    'University selection and application',
+                    'Document legalization assistance',
+                    'Polish translation services',
+                    'Bank account opening guidance',
+                    'Accommodation search',
+                    'Local SIM card arrangement'
+                ]
+            },
+            {
+                id: 'italy',
+                name: 'Italy',
+                flag: '🇮🇹',
+                class: 'country-italy',
+                partner: 'Italian Universities + MAECI',
+                processingTime: '4-8 weeks',
+                officialFees: '€50 visa + €70-160 residence',
+                docCount: 15,
+                documents: [
+                    'Pre-enrollment on Universitaly portal',
+                    'Declaration of Value (DoV) from Italian authorities',
+                    'University acceptance letter',
+                    'Financial proof (€450/month minimum)',
+                    'Valid passport',
+                    'Visa application form',
+                    'Passport photos',
+                    'Travel insurance',
+                    'Accommodation proof',
+                    'Flight reservation',
+                    'Academic transcripts (legalized)',
+                    'Language certificate (B1/B2 Italian or English)',
+                    'Motivation letter',
+                    'CV/Resume',
+                    'Birth certificate (translated + legalized)'
+                ],
+                timeline: [
+                    { step: '1', label: 'Universitaly' },
+                    { step: '2', label: 'DoV Request' },
+                    { step: '3', label: 'Visa Apply' },
+                    { step: '4', label: 'Permesso Soggiorno' }
+                ],
+                services: [
+                    'Universitaly pre-enrollment assistance',
+                    'Declaration of Value procurement',
+                    'Italian translation services',
+                    'University interview prep',
+                    'Housing search in Italy',
+                    'Permesso di Soggiorno application help'
+                ]
+            },
+            {
+                id: 'russia',
+                name: 'Russia',
+                flag: '🇷🇺',
+                class: 'country-russia',
+                partner: 'Russian Universities + CSC',
+                processingTime: '4-6 weeks',
+                officialFees: '$40-160 visa + invitation letter',
+                docCount: 15,
+                documents: [
+                    'CSC scholarship letter or university invitation',
+                    'HIV test certificate (valid 3 months)',
+                    'Chest X-ray medical certificate',
+                    'Invitation letter from MFA Russia',
+                    'Valid passport',
+                    'Visa application form',
+                    'Passport photos (white background)',
+                    'Academic documents (apostilled)',
+                    'Birth certificate (translated)',
+                    'Police clearance certificate',
+                    'Financial proof or scholarship',
+                    'Travel insurance',
+                    'University admission letter',
+                    '6 passport photos (matte finish)',
+                    'Medical examination form'
+                ],
+                timeline: [
+                    { step: '1', label: 'CSC Apply' },
+                    { step: '2', label: 'Medical Tests' },
+                    { step: '3', label: 'Invitation Letter' },
+                    { step: '4', label: 'Visa Stamping' }
+                ],
+                services: [
+                    'CSC scholarship application support',
+                    'Medical test center referrals',
+                    'Invitation letter follow-up',
+                    'Russian translation services',
+                    'University dormitory application',
+                    'Arrival support in Russia'
+                ]
+            },
+            {
+                id: 'china',
+                name: 'China',
+                flag: '🇨🇳',
+                class: 'country-china',
+                partner: 'Chinese Universities + CSC Scholarship',
+                processingTime: '4-6 weeks',
+                officialFees: '$30-140 visa + medical exam',
+                docCount: 16,
+                documents: [
+                    'CSC scholarship award letter',
+                    'JW202 form (Visa Application for Study in China)',
+                    'Admission letter from Chinese university',
+                    'Physical Examination Record',
+                    'Blood tests (HIV, syphilis, hepatitis)',
+                    'Chest X-ray report',
+                    'Valid passport (1+ year validity)',
+                    'Visa application form (Form V.2013)',
+                    'Passport photos (white background, 33x48mm)',
+                    'Highest degree certificate (notarized)',
+                    'Academic transcripts (notarized)',
+                    '2 Recommendation letters from professors',
+                    'Study plan/Research proposal',
+                    'No criminal record certificate',
+                    'Bank statement or scholarship proof',
+                    'Language proficiency (HSK for Chinese programs)'
+                ],
+                timeline: [
+                    { step: '1', label: 'CSC/University' },
+                    { step: '2', label: 'JW202 Form' },
+                    { step: '3', label: 'Medical Exam' },
+                    { step: '4', label: 'X1/X2 Visa' }
+                ],
+                services: [
+                    'CSC online application assistance',
+                    'Study plan writing guidance',
+                    'Recommendation letter review',
+                    'Medical examination booking',
+                    'JW202 form tracking',
+                    'University registration support'
+                ]
+            }
+        ];
+
+        function renderCountries() {
+            const grid = document.getElementById('countriesGrid');
+            grid.innerHTML = countries.map(country => `
+                <div class="country-card">
+                    <div class="country-header ${country.class}">
+                        <div class="country-flag">${country.flag}</div>
+                        <h2>${country.name}</h2>
+                        <div class="partner-info"><i class="fas fa-university"></i> ${country.partner}</div>
+                    </div>
+                    <div class="country-body">
+                        <div class="fee-row">
+                            <span class="fee-label">Our Service Fee</span>
+                            <span class="fee-value fee-zero">0 DZD</span>
+                        </div>
+                        <div class="fee-row">
+                            <span class="fee-label">Official Fees</span>
+                            <span class="fee-value">${country.officialFees}</span>
+                        </div>
+                        <div class="fee-row">
+                            <span class="fee-label">Processing Time</span>
+                            <span class="fee-value">${country.processingTime}</span>
+                        </div>
+                        <div class="fee-row">
+                            <span class="fee-label">Documents Required</span>
+                            <span class="fee-value">${country.docCount} items</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openModal('${country.id}')">
+                            <i class="fas fa-file-alt"></i> View Documents & Fees
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openModal(countryId) {
+            const country = countries.find(c => c.id === countryId);
+            if (!country) return;
+            
+            document.getElementById('modalFlag').textContent = country.flag;
+            document.getElementById('modalTitle').textContent = country.name + ' Student Visa';
+            document.getElementById('modalPartner').textContent = country.partner;
+            
+            const docsList = document.getElementById('modalDocuments');
+            docsList.innerHTML = country.documents.map(doc => `<li>${doc}</li>`).join('');
+            
+            document.getElementById('modalFees').innerHTML = `
+                <div class="fee-row">
+                    <span class="fee-label">Maghreb Campus Service Fee</span>
+                    <span class="fee-value" style="color: #10b981; font-size: 1.25rem;">0 DZD (Free)</span>
+                </div>
+                <div class="fee-row">
+                    <span class="fee-label">Official Government Fees</span>
+                    <span class="fee-value">${country.officialFees}</span>
+                </div>
+                <div class="fee-row">
+                    <span class="fee-label">Estimated Processing Time</span>
+                    <span class="fee-value">${country.processingTime}</span>
+                </div>
+            `;
+            
+            const timeline = document.getElementById('modalTimeline');
+            timeline.innerHTML = country.timeline.map(step => `
+                <div class="timeline-step">
+                    <div class="timeline-icon">${step.step}</div>
+                    <div class="timeline-label">${step.label}</div>
+                </div>
+            `).join('');
+            
+            const services = document.getElementById('modalServices');
+            services.innerHTML = country.services.map(s => `<li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--academic-blue); margin-right: 0.5rem;"></i> ${s}</li>`).join('');
+            
+            const whatsappText = encodeURIComponent(`Hello Maghreb Campus, I'm interested in studying in ${country.name}. Please provide more information about the student visa process.`);
+            document.getElementById('modalApplyBtn').href = `https://wa.me/213XXXXXXXXX?text=${whatsappText}`;
+            
+            document.getElementById('countryModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('countryModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('countryModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        renderCountries();
+    </script>
+</body>
+</html>

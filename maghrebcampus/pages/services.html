@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Visa Services | Maghreb Campus</title>
+    <meta name="description" content="À la carte visa services including flight reservations, hotel bookings, travel insurance, document translation, and more for Algerian travelers.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --academic-blue: #1e3a8a;
+            --academic-gold: #f59e0b;
+            --sunset-orange: #f97316;
+            --dark-navy: #0f172a;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', sans-serif; color: var(--text-dark); line-height: 1.6; background: var(--bg-light); }
+        
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 0;
+            transition: 0.3s ease; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--academic-blue); font-weight: 800; font-size: 1.5rem; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #f97316, #ec4899); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.15s ease; }
+        .nav-links a:hover { color: var(--sunset-orange); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-dark); font-size: 1.5rem; cursor: pointer; }
+        
+        .page-header {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ec4899 100%);
+            padding: 10rem 0 6rem;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .page-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .page-header p { font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+            transform: scaleX(0);
+            transition: 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            border-color: rgba(249, 115, 22, 0.2);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #fef3c7, #ffedd5);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--sunset-orange);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .service-card > p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            min-height: 3rem;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .features-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        
+        .features-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #10b981;
+        }
+        
+        .price-badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .delivery-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #f97316, #ec4899);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+        .whatsapp-btn {
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>Maghreb Campus</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="study-visa.html">Study Visa</a></li>
+                <li><a href="e-visa.html">E-Visa</a></li>
+                <li><a href="canada-visa.html">Canada</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Additional Visa Services</h1>
+            <p>À la carte services for your visa needs. Professional support for every aspect of your application.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-plane-departure"></i>
+                </div>
+                <h3>Flight Reservation</h3>
+                <p>Verifiable flight booking for visa applications without paying full ticket price.</p>
+                <ul class="features-list">
+                    <li>Real PNR number</li>
+                    <li>Airline verifiable</li>
+                    <li>Valid for 2 weeks</li>
+                    <li>All airlines available</li>
+                </ul>
+                <div class="price-badge">0 DZD</div>
+                <div class="delivery-time">
+                    <i class="fas fa-clock"></i> Delivery: 24 hours
+                </div>
+                <a href="https://wa.me/213XXXXXXXXX?text=Hello%20Maghreb%20Campus,%20I%20need%20a%20flight%20reservation%20for%20my%20visa%20application." class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-hotel"></i>
+                </div>
+                <h3>Hotel Booking Verification</h3>
+                <p>Confirmed hotel reservations with flexible cancellation for visa purposes.</p>
+                <ul class="features-list">
+                    <li>Confirmed booking</li>
+                    <li>Flexible cancellation</li>
+                    <li>All hotel categories</li>
+                    <li>Booking confirmation letter</li>
+                </ul>
+                <div class="price-badge">0 DZD</div>
+                <div class="delivery-time">
+                    <i class="fas fa-clock"></i> Delivery: 24 hours
+                </div>
+                <a href="https://wa.me/213XXXXXXXXX?text=Hello%20Maghreb%20Campus,%20I%20need%20a%20hotel%20booking%20for%20my%20visa%20application." class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Travel Insurance</h3>
+                <p>Schengen-approved travel insurance with €30,000+ medical coverage.</p>
+                <ul class="features-list">
+                    <li>€30,000+ coverage</li>
+                    <li>Schengen approved</li>
+                    <li>Medical + repatriation</li>
+                    <li>Instant policy delivery</li>
+                </ul>
+                <div class="price-badge">0 DZD</div>
+                <div class="delivery-time">
+                    <i class="fas fa-clock"></i> Delivery: Instant
+                </div>
+                <a href="https://wa.me/213XXXXXXXXX?text=Hello%20Maghreb%20Campus,%20I%20need%20travel%20insurance%20for%20my%20visa." class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <h3>Document Translation</h3>
+                <p>Certified and sworn translation services for all official documents.</p>
+                <ul class="features-list">
+                    <li>Certified translators</li>
+                    <li>Sworn translations available</li>
+                    <li>All language pairs</li>
+                    <li>Notarization if needed</li>
+                </ul>
+                <div class="price-badge">0 DZD</div>
+                <div class="delivery-time">
+                    <i class="fas fa-clock"></i> Delivery: 2-3 days
+                </div>
+                <a href="https://wa.me/213XXXXXXXXX?text=Hello%20Maghreb%20Campus,%20I%20need%20document%20translation%20services." class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Appointment Booking</h3>
+                <p>We book your embassy, VFS, or TLScontact appointments hassle-free.</p>
+                <ul class="features-list">
+                    <li>Embassy appointments</li>
+                    <li>VFS Global booking</li>
+                    <li>TLScontact slots</li>
+                    <li>Appointment reminders</li>
+                </ul>
+                <div class="price-badge">0 DZD</div>
+                <div class="delivery-time">
+                    <i class="fas fa-clock"></i> Delivery: 24-48 hours
+                </div>
+                <a href="https://wa.me/213XXXXXXXXX?text=Hello%20Maghreb%20Campus,%20I%20need%20help%20booking%20a%20visa%20appointment." class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3>Visa Photo Service</h3>
+                <p>Professional visa photos meeting all country specifications and ICAO standards.</p>
+                <ul class="features-list">
+                    <li>All country specs</li>
+                    <li>ICAO standards</li>
+                    <li>Digital + prints</li>
+                    <li>Background adjustment</li>
+                </ul>
+                <div class="price-badge">0 DZD</div>
+                <div class="delivery-time">
+                    <i class="fas fa-clock"></i> Delivery: Same day
+                </div>
+                <a href="https://wa.me/213XXXXXXXXX?text=Hello%20Maghreb%20Campus,%20I%20need%20visa%20photos%20taken." class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-search-dollar"></i>
+                </div>
+                <h3>Document Review</h3>
+                <p>Complete application check to identify errors before submission.</p>
+                <ul class="features-list">
+                    <li>Complete application check</li>
+                    <li>Error identification</li>
+                    <li>Improvement suggestions</li>
+                    <li>Compliance verification</li>
+                </ul>
+                <div class="price-badge">0 DZD</div>
+                <div class="delivery-time">
+                    <i class="fas fa-clock"></i> Delivery: 24 hours
+                </div>
+                <a href="https://wa.me/213XXXXXXXXX?text=Hello%20Maghreb%20Campus,%20I%20need%20my%20visa%20documents%20reviewed." class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Priority Processing</h3>
+                <p>Express handling of your application with daily status updates.</p>
+                <ul class="features-list">
+                    <li>Express handling</li>
+                    <li>Daily updates</li>
+                    <li>Dedicated agent</li>
+                    <li>Fast-track submission</li>
+                </ul>
+                <div class="price-badge">0 DZD</div>
+                <div class="delivery-time">
+                    <i class="fas fa-clock"></i> Delivery: Same day start
+                </div>
+                <a href="https://wa.me/213XXXXXXXXX?text=Hello%20Maghreb%20Campus,%20I%20need%20priority%20processing%20for%20my%20visa." class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                               </a>
+            </div>
+        </div>
+    </main>
+
+    <div class="whatsapp-float">
+        <a href="https://wa.me/213XXXXXXXXX" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+</body>
+</html>
